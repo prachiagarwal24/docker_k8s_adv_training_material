@@ -1,0 +1,35 @@
+prachiagarwal@prachiagarwal-mac Docker K8s traing Advanced % 
+
+docker run --hostname rabbit1 --name rabbit1 -e RABBITMQ_ERLANG_COOKIE='rabbitcluster' -p 30000:5672  -p 30001:15672 rabbitmq:3.8-management
+
+
+
+ docker run --hostname rabbit1 --name rabbit1 -e RABBITMQ_ERLANG_COOKIE='rabbitcluster' -p 30000:5672 -p 30001:15672 rabbitmq:3.8-management
+
+
+docker run -d --hostname rabbit2 --name rabbit2 --link rabbit1:rabbit1 -e RABBITMQ_ERLANG_COOKIE='rabbitcluster' -p 30002:5672 -p 30003:15672 rabbitmq:3.8-management
+
+
+docker run -d --hostname rabbit3 --name rabbit3 --link rabbit1:rabbit1 --link rabbit2:rabbit2 -e RABBITMQ_ERLANG_COOKIE='rabbitcluster' -p 30004:5672 -p 30005:15672 rabbitmq:3.8-management
+
+
+docker exec -it rabbit2 /bin/bash
+root@rabbit2:/# rabbitmqctl stop_app
+
+root@rabbit2:/# rabbitmqctl join_cluster rabbit@rabbit1
+
+root@rabbit2:/# rabbitmqctl start_app
+
+root@rabbit2:/# exit
+
+
+
+docker exec -it rabbit3 /bin/bash
+
+root@rabbit3:/# rabbitmqctl stop_app
+
+root@rabbit3:/# rabbitmqctl join_cluster rabbit@rabbit1
+
+root@rabbit3:/# rabbitmqctl start_app
+root@rabbit2:/# exit
+

@@ -1,0 +1,52 @@
+---> When you want your containers to have your own created network eg. oraclenetwork
+
+docker run -it --network=oraclenetwork  alpine   
+
+
+
+
+
+prachiagarwal@prachiagarwal-mac Docker K8s traing Advanced % docker ps
+CONTAINER ID   IMAGE     COMMAND     CREATED              STATUS              PORTS     NAMES
+0e5329482e9d   alpine    "/bin/sh"   About a minute ago   Up About a minute             xenodochial_wilbur
+
+
+
+        "Containers": {
+            "0e5329482e9deb68a36951fe98878bd33710ea2a451f681fc03868e0f110aa15": {
+                "Name": "xenodochial_wilbur",
+                "EndpointID": "e935148b7ac0be05cf8fe1e7f8c4bba8912770939b7e417de96a1c4210304cdc",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+
+
+1 more (above image)
+
+
+prachiagarwal@prachiagarwal-mac Docker K8s traing Advanced % docker ps
+CONTAINER ID   IMAGE     COMMAND     CREATED         STATUS         PORTS     NAMES
+7a110976a3a8   alpine    "/bin/sh"   9 seconds ago   Up 7 seconds             sweet_goldstine
+0e5329482e9d   alpine    "/bin/sh"   4 minutes ago   Up 4 minutes             xenodochial_wilbur
+
+
+        "ConfigOnly": false,
+        "Containers": {
+            "0e5329482e9deb68a36951fe98878bd33710ea2a451f681fc03868e0f110aa15": {
+                "Name": "xenodochial_wilbur",
+                "EndpointID": "e935148b7ac0be05cf8fe1e7f8c4bba8912770939b7e417de96a1c4210304cdc",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            },
+            "7a110976a3a8f46ce190a43a5b09caeb61792d03d4dc29cd963a7711a4c08e2d": {
+                "Name": "sweet_goldstine",
+                "EndpointID": "e9e830ffcf82fb6000bafc8c06b4645039f6bebf41e13b183ee1e526365855b1",
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+

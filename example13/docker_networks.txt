@@ -1,0 +1,27 @@
+3 types of networks :
+bridge , host, null
+
+docker create network oraclenetwork 
+9d41711ea928   bridge                   bridge    local
+96d94331fb8d   docker_compose_default   bridge    local
+4c9a3acfe60e   host                     host      local
+f3ec22fdcb8c   none                     null      local
+6c3327d78a84   oraclenetwork            bridge    local
+
+we are ALLOWED to create only BRIDGE NETWORK 
+
+docker network inspect bridge
+output :  "Containers": {},
+
+docker run -it alpine /bin/sh
+output : "Containers": {
+            "009ef1846625580a03692e16adfa8649c1c3033a4687ab3f2d093d65a97d1ff6": {
+                "Name": "modest_allen",
+                "EndpointID": "118d87f433a0700da77dfa9902dc53bbbf99ad80a61bdceb32e339f4889bc64e",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            }
+
+LOGIC : whenever an interactive (-it) mode is ran for a container, it attaches this container to the "bridge" (default named)
+network. as many containers will be added n this network as the number of -it mode containers are run

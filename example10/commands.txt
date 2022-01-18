@@ -1,0 +1,14 @@
+#Docker push n pull from the hub
+
+ 1117  docker images
+
+ 1119  docker login
+
+ 1122  docker tag 7bff86ad792f prachi24oracle/example8:1.0
+ 
+ 1125  docker push prachi24oracle/example8:1.0
+
+
+ NOW you can pull from this public repo
+
+ 

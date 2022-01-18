@@ -1,0 +1,14 @@
+-> common place to keep contents and mount it to a specificic place in the local system
+
+MOUNT  :
+docker run -it -v /Users/prachiagarwal/volume_demo:/volume_inside --name system2 alpine
+
+VOLUME OBJECTS to share volume between containers
+docker volume create mydata
+
+a : docker run -it --name=example1 --mount source=mydata,destination=/newvolumeobj  alpine
+
+b : docker run -it --name=example2 --mount source=mydata,destination=/newvolumeobj  alpine 
+
+these 2 containers share this mydata volume object npw, whatever happens in newvolumeobj in a will reflect in b and vice versa
+

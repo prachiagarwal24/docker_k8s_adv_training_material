@@ -1,0 +1,47 @@
+# push n pull from/to local repository
+# have to have a dedicated server , useful for creating a space to be used only by office people or restricted people
+
+
+
+docker run -d -p 5000:5000 --name registry registry:2 (downloads registry)
+
+prachiagarwal@prachiagarwal-mac example8 % docker images
+REPOSITORY                TAG       IMAGE ID       CREATED             SIZE
+example9                  1.0       97039e764713   About an hour ago   905MB
+example8                  1.0       7bff86ad792f   2 hours ago         219MB
+localhost:5000/example8   1.0       7bff86ad792f   2 hours ago         219MB
+
+
+
+ docker push localhost:5000/example8:1.0   
+
+ prachiagarwal@prachiagarwal-mac example8 % docker images
+REPOSITORY                TAG       IMAGE ID       CREATED             SIZE
+example9                  1.0       97039e764713   About an hour ago   905MB
+example8                  1.0       7bff86ad792f   2 hours ago         219MB
+localhost:5000/example8   1.0       7bff86ad792f   2 hours ago         219MB
+registry                  2         b8604a3fe854   2 months ago        26.2MB
+
+
+docker rmi -f 7bff86ad792f
+
+prachiagarwal@prachiagarwal-mac example8 % docker images
+REPOSITORY   TAG       IMAGE ID       CREATED             SIZE
+example9     1.0       97039e764713   About an hour ago   905MB
+registry     2         b8604a3fe854   2 months ago        26.2MB
+
+ docker pull localhost:5000/example8:1.0 
+
+ docker images
+REPOSITORY                TAG       IMAGE ID       CREATED             SIZE
+example9                  1.0       97039e764713   About an hour ago   905MB
+localhost:5000/example8   1.0       7bff86ad792f   2 hours ago         219MB
+registry                  2         b8604a3fe854   2 months ago        26.2MB
+
+
+REST apis 
+visit --->  http://localhost:5000/v2/_catalog to see all the images in local repository
+http://localhost:5000/v2/example8/tags/list
+
+
+

@@ -1,0 +1,4 @@
+usage of docker swarm :
+    - it is an orchestrator
+    - managing and controlling containers as a single service is called orchestration
+    - 
